@@ -9,9 +9,9 @@ public class ConnectionFactory {
 	
 	public Connection getConnection() {
 		
-		String url = "jdbc:postgresql://fuctura.cy9ok6ouegjq.us-east-1.rds.amazonaws.com:5432/postgres";
-		String user = "aragao";
-		String password = "aragao#aluno";
+		String url = "jdbc:postgresql://localhost:5432/produtos";
+		String user = "postgres";
+		String password = "admin";
 		
 		try {
 			Connection c =  DriverManager.getConnection(url, user, password);
