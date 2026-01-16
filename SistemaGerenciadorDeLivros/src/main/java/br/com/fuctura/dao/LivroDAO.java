@@ -21,7 +21,6 @@ public class LivroDAO {
 	}
 	public void excluir (Livro livro) {}
 	
-	
 	public void cadastrar(String nomeLivro) {
 		// insert into livro (titulo) values (?);
 		String comandoSQL = "insert into livro (titulo) values (?)";
