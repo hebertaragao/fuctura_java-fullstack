@@ -1,0 +1,6 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/postgresql/postgresql/42.7.8/postgresql-42.7.8.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/checkerframework/checker-qual/3.49.5/checker-qual-3.49.5.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/jline/jline/3.26.0/jline-3.26.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

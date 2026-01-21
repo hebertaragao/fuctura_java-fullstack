@@ -1,5 +1,8 @@
 package br.com.fuctura.service;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import br.com.fuctura.dao.LivroDAO;
 import br.com.fuctura.domain.Livro;
 
@@ -15,10 +18,23 @@ public class LivroService {
 		LivroDAO dao = new LivroDAO();
 		
 		Livro livro = new Livro();
-		livro.setNome(nomeLivro);
+		livro.setTitulo(nomeLivro);
 		
 		dao.cadastrar(nomeLivro);
 		
+	}
+	
+	public List<Livro> connsultarTodos() throws SQLException{
+		LivroDAO dao = new LivroDAO();
+		return dao.consultarTodos();
+	}
+
+	public List<Livro> connsultarPorTitulo(String titulo) throws SQLException {
+		LivroDAO dao = new LivroDAO();
+		Livro livro = new Livro();
+		livro.setTitulo(titulo);
+		
+		return dao.consultarPorTitulo(livro);
 	}
 
 }

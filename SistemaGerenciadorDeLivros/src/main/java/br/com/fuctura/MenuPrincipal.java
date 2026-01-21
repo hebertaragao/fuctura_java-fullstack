@@ -1,10 +1,14 @@
 package br.com.fuctura;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 
+import br.com.fuctura.domain.Livro;
 import br.com.fuctura.service.LivroService;
 
 public class MenuPrincipal {
@@ -16,7 +20,7 @@ public class MenuPrincipal {
 		reader = LineReaderBuilder.builder().terminal(terminal).build();
 	}
 
-	public void iniciar() {
+	public void iniciar() throws SQLException {
 		String opcao;
 
 		do {
@@ -42,28 +46,30 @@ public class MenuPrincipal {
 		} while (!opcao.equals("0"));
 	}
 
-	private void menuLivros() {
+	private void menuLivros() throws SQLException {
 		String opcao;
 
 		do {
 			System.out.println("\n------ MENU LIVROS ------");
 			System.out.println("1) Cadastrar Livro");
 			System.out.println("2) Listar Livros");
-			System.out.println("3) Buscar Livro");
+			System.out.println("3) Buscar Livro Por Título");
 			System.out.println("0) Voltar");
 
 			opcao = reader.readLine("Escolha: ");
 
 			switch (opcao) {
 			case "1" -> cadastrarLivro();
-			case "2" -> System.out.println("b...");
-			case "3" -> System.out.println("c...");
+			case "2" -> listarLivros();
+			case "3" -> consultarPorTitulo();
 			case "0" -> System.out.println("Voltando...");
 			default -> System.out.println("Opção inválida!");
 			}
 
 		} while (!opcao.equals("0"));
 	}
+
+
 
 	private void menuUsuarios() {
 		String opcao;
@@ -83,13 +89,35 @@ public class MenuPrincipal {
 
 		} while (!opcao.equals("0"));
 	}
-	
+
 	private void cadastrarLivro() {
 		String nomeLivro = reader.readLine("Digite o nome do Livro: ");
-		
+
 		LivroService service = new LivroService();
-		
-		
+
 		service.cadastrar(nomeLivro);
 	}
+
+	private void listarLivros() throws SQLException {
+		LivroService service = new LivroService();
+		List<Livro> livros = service.connsultarTodos();
+
+		for (Livro livro : livros) {
+			System.out.println("ID: " + livro.getId());
+			System.out.println("Título: " + livro.getTitulo());
+		}
+	}
+	private void consultarPorTitulo() throws SQLException {
+		
+		String titulo = reader.readLine("Digite os 3 primeiros caracteres do título do livro: ");
+		LivroService service = new LivroService();
+		
+		List<Livro> livros = service.connsultarPorTitulo(titulo);
+		for (Livro livro : livros) {
+			System.out.println("ID: " + livro.getId());
+			System.out.println("Título: " + livro.getTitulo());
+		}
+		
+	}
+
 }

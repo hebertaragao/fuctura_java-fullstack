@@ -1,16 +1,12 @@
 package br.com.fuctura.domain;
 
+import lombok.Data;
+
+@Data
 public class Livro {
+	private int id;
+	private String titulo;
 
-	private String nome;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nomeLivro) {
-		this.nome = nomeLivro;
-	}
-	
+	// Lombok gera getters/setters
 
 }
